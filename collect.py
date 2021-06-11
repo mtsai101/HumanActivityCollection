@@ -210,30 +210,30 @@ def start_camera():
 
 def main():
     global record_flag, cur_time, close_camera, activity_type
-    pro = Nonet
+    mmwave_proc = None
     camera_thread = threading.Thread(target=start_camera)
     camera_thread.start()
     camera_ready.wait()
     while True:
         c = input("Start(s), stop(t), or Quit(q):")
         if c == "s":
-            if not pro:
+            if not mmwave_proc:
                 activity_type = input("Type the activity:")
                 cur_time = str(int(time.time() * (10**5)))
                 output_path = f'{activity_type}_mmw_{cur_time}.txt'
                 f = open(output_path, 'w')
-                pro = subprocess.Popen(["rostopic", "echo", "/ti_mmwave/radar_scan"], stdout=f)
+                mmwave_proc = subprocess.Popen(["rostopic", "echo", "/ti_mmwave/radar_scan"], stdout=f)
                 record_flag = True
                 
         elif c == "t":
-            if pro:
-                pro.kill()
-                pro = None
-                record_flag = False
+            record_flag = False
+            if mmwave_proc:
+                mmwave_proc.kill()
+                mmwave_proc = None
                 f.close()
-
             else:
-                print("No Running Process")
+                print("No Running mmWave Process")
+            
         else:
             close_camera = True
             camera_thread.join()
