@@ -1,0 +1,2 @@
+Total frame:896
+Average point per frame:28.897321428571427
