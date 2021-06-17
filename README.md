@@ -44,7 +44,7 @@ The results would be written into the follwing files:
 - < ActivityName > _ depth _ < timestamp >.mp4
 - < ActivityName > _ mmw _ < timestamp >.txt
 - < ActivityName > _ skeleton _ < timestamp >.txt
-Samle results can be found [here](https://drive.google.com/drive/folders/1DeQZuqLcInEF_YPhyaLtGXcPwgi5_Nl3?usp=sharing)
+Sample results can be found [here](https://drive.google.com/drive/folders/1DeQZuqLcInEF_YPhyaLtGXcPwgi5_Nl3?usp=sharing)
 
 ## Data Format
 
